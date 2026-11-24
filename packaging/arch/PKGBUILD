@@ -1,0 +1,31 @@
+pkgname=sddm-noctalia-blurry-git
+pkgver=1.0.0.r0.g0000000
+pkgrel=1
+pkgdesc="macOS-inspired matte SDDM Qt6 theme with automatic Noctalia wallpaper and palette sync"
+arch=('any')
+url="https://github.com/munraitoo13/sddm-noctalia-blurry"
+license=('MIT')
+depends=('sddm' 'qt6-declarative' 'imagemagick' 'python' 'bash')
+optdepends=(
+    'noctalia: automatic wallpaper and color palette sync'
+    'hyprland: automatic primary monitor detection'
+)
+makedepends=('git' 'make')
+provides=('sddm-noctalia-blurry')
+conflicts=('sddm-noctalia-blurry')
+install=sddm-noctalia-blurry.install
+
+pkgver() {
+    local repo="${startdir}/../.."
+    if git -C "$repo" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        printf "1.0.0.r%s.g%s" \
+            "$(git -C "$repo" rev-list --count HEAD)" \
+            "$(git -C "$repo" rev-parse --short HEAD)"
+    else
+        printf "1.0.0"
+    fi
+}
+
+package() {
+    make -C "${startdir}/../.." DESTDIR="$pkgdir" PREFIX=/usr install
+}

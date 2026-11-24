@@ -1,0 +1,7 @@
+[Unit]
+Description=Sync active Noctalia wallpaper and palette to SDDM login theme
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/noctalia-sddm-sync

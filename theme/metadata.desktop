@@ -1,0 +1,12 @@
+[SddmGreeterTheme]
+Name=Noctalia Blurry
+Description=macOS-inspired frosted matte SDDM theme with automatic Noctalia wallpaper and palette sync
+Author=munraitoo13
+License=MIT
+Type=sddm-theme
+Version=1.0.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=noctalia-blurry
+Theme-API=2.0
+QtVersion=6

@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically sync Noctalia wallpaper and palette to SDDM
+
+[Timer]
+OnStartupSec=15s
+OnUnitActiveSec=2min
+Unit=noctalia-sddm-sync.service
+
+[Install]
+WantedBy=timers.target

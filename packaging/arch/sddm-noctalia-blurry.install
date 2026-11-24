@@ -1,0 +1,17 @@
+post_install() {
+    cat <<'EOF'
+==> To finish enabling sddm-noctalia-blurry:
+  1. Add your user to the 'noctalia-sddm' group so wallpaper/palette sync needs no sudo:
+       sudo usermod -aG noctalia-sddm "$USER"
+  2. Activate the SDDM theme:
+       sudo install -Dm644 /usr/share/doc/sddm-noctalia-blurry/10-noctalia-blurry.conf /etc/sddm.conf.d/10-noctalia-blurry.conf
+  3. Enable automatic Noctalia sync (as your regular user, after re-login or fixing /var/lib/noctalia-sddm permissions):
+       systemctl --user enable --now noctalia-sddm-sync.timer
+  4. Optional — set a circular login avatar:
+       noctalia-sddm-sync --avatar /path/to/photo.jpg
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

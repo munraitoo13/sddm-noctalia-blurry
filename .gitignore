@@ -1,0 +1,8 @@
+*.pkg.tar.*
+src/
+pkg/
+.last_*
+theme/wallpaper.png
+theme/avatar.png
+theme/Palette.qml
+.DS_Store
